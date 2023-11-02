@@ -1,9 +1,14 @@
-<?php 
-function koneksi()  {
-    $conn = mysqli_connect("localhost","root", "faqih1993","rappel_gaji");
-    mysqli_select_db($conn, "rappel_gaji");
-    return $conn;
-}
+<?php
+
+use JetBrains\PhpStorm\Internal\ReturnTypeContract;
+
+$conn = mysqli_connect("localhost","root","faqih1993","rappel_gaji");
+
+// function koneksi()  {
+//     $conn = mysqli_connect("localhost","root", "faqih1993","rappel_gaji");
+//     mysqli_select_db($conn, "rappel_gaji");
+//     return $conn;
+// }
 function query($query) {
     $conn = koneksi();
     $result = mysqli_query($conn, $query);
@@ -49,10 +54,51 @@ mysqli_query($conn, $query);
 
 return mysqli_affected_rows($conn);
 
+}
 
+function registrasi($data) {
+    $conn = mysqli_connect("localhost","root","faqih1993","rappel_gaji");
+
+    $email = $data["email"];
+    $password = mysqli_real_escape_string($conn, $data["password"]) ;
+    $password2 = mysqli_real_escape_string($conn, $data["password2"]) ;
+
+    // cek email sudah dipakai atau belum
+$result = mysqli_query($conn, "SELECT email FROM user WHERE email = '$email'");
+if(mysqli_fetch_assoc($result)) {
+    echo "<script>
+    alert('Email sudah terdaftar. Silahkan gunakan email yang lain!')
+    </script>";
+    return false;
 }
 
 
+    // cek konfirmasi password
+
+if($password !== $password2){
+    echo "<script>
+    alert('konfirmasi password salah')
+    </script>";
+    return false;
+}
+
+//encript password
+
+$password = password_hash($password, PASSWORD_DEFAULT);
+
+// tambahkan user ke database
+
+mysqli_query($conn, "INSERT INTO user (email, password) VALUES('$email', '$password')");
+
+// mysqli_query($conn, "INSERT INTO user set
+// email = '$_POST[email]',
+// password = '$_POST[password]'");
+
+return mysqli_affected_rows($conn);
+
+
+
+}
 
 
 
