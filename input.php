@@ -18,7 +18,7 @@
 </body>
 <main>
     <section id="input">
-    <div class="container"></div>
+    <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-6">
             <form action="" method="post">
@@ -56,6 +56,7 @@
                 </div>
             </form>
         </div>
+    </div>
     </div>
     </section>
 </main>

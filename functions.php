@@ -4,11 +4,11 @@ use JetBrains\PhpStorm\Internal\ReturnTypeContract;
 
 $conn = mysqli_connect("localhost","root","faqih1993","rappel_gaji");
 
-// function koneksi()  {
-//     $conn = mysqli_connect("localhost","root", "faqih1993","rappel_gaji");
-//     mysqli_select_db($conn, "rappel_gaji");
-//     return $conn;
-// }
+function koneksi()  {
+    $conn = mysqli_connect("localhost","root", "faqih1993","rappel_gaji");
+    mysqli_select_db($conn, "rappel_gaji");
+    return $conn;
+}
 function query($query) {
     $conn = koneksi();
     $result = mysqli_query($conn, $query);

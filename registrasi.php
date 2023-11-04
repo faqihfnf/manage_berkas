@@ -31,27 +31,34 @@ else {
     <title>Regristrasi</title>
 </head>
 <body>
-    
-<h1>Halaman Registrasi</h1>
-
-<form action="" method="post">
-<div class="col-md-2">
-<div class="mb-3">
-  <label for="username" class="form-label">Email</label>
-  <input type="email" name="email" id="email" class="form-control">
-</div>
-<div class="mb-3">
-  <label for="password" class="form-label">Password</label>
-  <input type="text" name="password" id="password" class="form-control">
-  </div> 
-
-  <div class="mb-3">
-  <label for="password2" class="form-label">Konfirmasi Password</label>
-  <input type="text" name="password2" id="password2" class="form-control">
-  </div>
-  <button type="submit" name="register" class="btn btn-primary">Submit</button>
-  
-</form>
-
+<h1 class="text-center">Halaman Registrasi</h1>    
 </body>
+<main>
+
+<div class="container">
+    <div class="row justify-content-center">
+    <div class="col-md-4">
+  <form action="" method="post">
+      <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" name="email" id="email" class="form-control">
+      </div>
+      <div class="mb-3">
+  <label for="password" class="form-label">Password</label>
+  <input type="password" name="password" id="password" class="form-control">
+      </div> 
+<div class="mb-3">
+  <label for="password2" class="form-label">Konfirmasi Password</label>
+  <input type="password" name="password2" id="password2" class="form-control">
+</div>
+<button type="submit" name="register" class="btn btn-primary">Submit</button>
+</div>  
+</form>
+</div>  
+</div>  
+</div>  
+
+
+</main>
+
 </html>
