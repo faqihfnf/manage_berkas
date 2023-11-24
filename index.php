@@ -1,4 +1,10 @@
 <?php
+session_start();
+if (!isset($_SESSION['login'])) {
+    header("Location: login.php");
+    exit;
+}
+
 function koneksi()  {
     $conn = mysqli_connect("localhost","root", "faqih1993");
     mysqli_select_db($conn, "rappel_gaji");
@@ -37,9 +43,12 @@ $karyawan_rappel = query("SELECT *  FROM karyawan_rappel")
 </head>
 
 <body>
-    <h1 class="d-flex justify-content-center bg-primary-subtle">Data Rappel Gaji Karyawan </h1>
+    
+    <h1 class="d-flex justify-content-center bg-primary-subtle">Data Rappel Gaji Karyawan 
+    <a href="logout.php"><button type="button" class="btn btn-danger position-absolute end-0">logout</button></a>   
+    </h1> 
     <div class="container p-5">
-    <a href="input.php"><button type="button" class="btn btn-info">Tambah Data Karyawan</button></a>    
+        <a href="input.php"><button type="button" class="btn btn-info">Tambah Data Karyawan</button></a>    
     
         <br><br>
         <table id="myTable" class="table table-hover">

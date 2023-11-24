@@ -1,3 +1,28 @@
+<?php 
+
+session_start();
+if (!isset($_SESSION['login'])) {
+    header("Location: login.php");
+    exit;
+}
+$koneksi = mysqli_connect("localhost","root","faqih1993","rappel_gaji");
+
+
+if(isset($_POST["submit"])){
+    mysqli_query($koneksi, "insert into karyawan_rappel set
+    employee_id = '$_POST[employee_id]',
+    name = '$_POST[name]', 
+    job_level = '$_POST[job_level]',
+    job_position = '$_POST[job_position]',
+    organization = '$_POST[organization]',
+    periode = '$_POST[periode]',
+    keterangan = '$_POST[keterangan]'");    
+    
+    echo "<script> alert('Data Berhasil Ditambahkan');
+    document.location.href = 'index.php'
+    </script>";
+}
+?>
 
 <!doctype html>
 <html lang="en">
@@ -62,25 +87,8 @@
 </main>
 </html>
 
-<?php 
-$koneksi = mysqli_connect("localhost","root","faqih1993","rappel_gaji");
 
 
-if(isset($_POST["submit"])){
-    mysqli_query($koneksi, "insert into karyawan_rappel set
-    employee_id = '$_POST[employee_id]',
-    name = '$_POST[name]', 
-    job_level = '$_POST[job_level]',
-    job_position = '$_POST[job_position]',
-    organization = '$_POST[organization]',
-    periode = '$_POST[periode]',
-    keterangan = '$_POST[keterangan]'");    
-    
-    echo "<script> alert('Data Berhasil Ditambahkan');
-    document.location.href = 'index.php'
-    </script>";
-}
-?>
 
 
 
